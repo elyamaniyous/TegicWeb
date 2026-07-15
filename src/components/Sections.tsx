@@ -1,10 +1,75 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Rings } from "./Rings";
+import { Photo } from "./Photo";
+import { Magnetic } from "./motion/Motion";
 import { IconArrow, IconPlus, IconCustoms, IconWarehouse, IconDistribution, IconGlobe, IconTruck } from "./Icons";
 import { ROUTES, type RouteKey } from "@/lib/routes";
+import { MEDIA, type MediaKey } from "@/lib/media";
 import type { Locale } from "@/lib/site";
 import type { Dict } from "@/i18n";
+
+/* ---------- Masthead éditorial (n° / titre / méta) ---------- */
+export function Masthead({
+  no,
+  title,
+  meta,
+  lead,
+}: {
+  no: string;
+  title: string;
+  meta?: string;
+  lead?: string;
+}) {
+  return (
+    <header className={`mast${lead ? " mast--lead" : ""}`}>
+      <span className="mast__no">({no})</span>
+      <h2 className="h2" data-reveal>{title}</h2>
+      {meta && !lead ? <span className="mast__meta">{meta}</span> : null}
+      {lead ? <p className="lead" data-reveal style={{ ["--d" as string]: "0.1s" }}>{lead}</p> : null}
+    </header>
+  );
+}
+
+/* ---------- Liste services éditoriale avec aperçu photo ---------- */
+const SERVICE_THUMBS: Record<string, MediaKey> = {
+  transitDouane: "dockLoading",
+  transportAmont: "heroTransport",
+  entreposage: "warehouse",
+  distribution: "distribution",
+  freightForwarding: "fleet",
+};
+
+export function ServiceRows({
+  locale,
+  dict,
+  exclude,
+}: {
+  locale: Locale;
+  dict: Dict;
+  exclude?: RouteKey;
+}) {
+  const keys: RouteKey[] = ["transitDouane", "transportAmont", "entreposage", "distribution", "freightForwarding"];
+  const shown = keys.filter((k) => k !== exclude);
+  return (
+    <div className="svclist">
+      {shown.map((k, i) => {
+        const s = dict.services[k as keyof Dict["services"]];
+        return (
+          <Link key={k} href={ROUTES[k][locale]} className="svcrow" data-reveal style={{ ["--d" as string]: `${i * 0.05}s` }}>
+            <span className="svcrow__no">{String(i + 1).padStart(2, "0")}</span>
+            <span className="svcrow__title">{s.title}</span>
+            <span className="svcrow__desc">{s.desc}</span>
+            <span className="svcrow__arr" aria-hidden><IconArrow /></span>
+            <span className="svcrow__thumb" aria-hidden>
+              <Photo slot={MEDIA[SERVICE_THUMBS[k]]} locale={locale} />
+            </span>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
 
 /* ---------- En-tête de section ---------- */
 export function SectionHead({
@@ -40,16 +105,18 @@ export function CtaBand({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <section className="section section--dark" aria-label={title}>
+    <section className="section section--paper" aria-label={title}>
       <div className="container">
-        <div className="cta-band" data-reveal>
-          <Rings className="cta-band__rings rings-svg" cx="50%" cy="115%" />
+        <div className="cta-band on-dark" data-reveal>
+          <Rings className="cta-band__rings rings-svg" cx="88%" cy="110%" />
           <h2 className="h2">{title}</h2>
           <p className="lead">{text}</p>
-          <div className="hero__ctas" style={{ justifyContent: "center" }}>
-            <Link href={primary.href} className="btn btn--primary btn--lg">
-              {primary.label} <span className="arr"><IconArrow /></span>
-            </Link>
+          <div className="hero__ctas">
+            <Magnetic>
+              <Link href={primary.href} className="btn btn--green btn--lg">
+                <span>{primary.label}</span> <span className="arr"><IconArrow /></span>
+              </Link>
+            </Magnetic>
             {secondary ? (
               <Link href={secondary.href} className="btn btn--ghost btn--lg">
                 {secondary.label}

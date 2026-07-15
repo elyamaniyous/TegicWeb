@@ -54,7 +54,7 @@ export function LogoLockup({
   return (
     <span
       className={className}
-      style={{ display: "inline-flex", flexDirection: "column", gap: tagline ? 8 : 0, color: "#fff" }}
+      style={{ display: "inline-flex", flexDirection: "column", gap: tagline ? 8 : 0 }}
     >
       <TegicWordmark height={height} />
       {tagline && (

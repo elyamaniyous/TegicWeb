@@ -88,8 +88,8 @@ export function Header({ locale, labels, solid = false }: { locale: Locale; labe
 
           <div className="hdr__right">
             {langSwitch}
-            <Link href={ROUTES.quote[locale]} className="btn btn--primary">
-              {labels.quote}
+            <Link href={ROUTES.quote[locale]} className="btn btn--cta">
+              <span>{labels.quote}</span>
             </Link>
             <button
               className="burger"
@@ -113,8 +113,8 @@ export function Header({ locale, labels, solid = false }: { locale: Locale; labe
           ))}
         </nav>
         <div className="mnav__cta">
-          <Link href={ROUTES.quote[locale]} className="btn btn--primary btn--lg" style={{ justifyContent: "center" }}>
-            {labels.quote}
+          <Link href={ROUTES.quote[locale]} className="btn btn--green btn--lg" style={{ justifyContent: "center" }}>
+            <span>{labels.quote}</span>
           </Link>
         </div>
         {langSwitch}

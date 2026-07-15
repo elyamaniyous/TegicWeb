@@ -6,10 +6,10 @@ import type { Locale } from "@/lib/site";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
-import { Rings } from "@/components/Rings";
 import { CountUp } from "@/components/CountUp";
-import { SectionHead, CtaBand, ServiceCards, Ticker } from "@/components/Sections";
-import { IconArrow, IconTruck, IconFlow, IconGps, IconShield, IconCargo } from "@/components/Icons";
+import { Masthead, ServiceRows, CtaBand } from "@/components/Sections";
+import { HeroIntro, SplitHeading, ScrubScale, Magnetic } from "@/components/motion/Motion";
+import { IconArrow, IconFlow, IconGps, IconShield, IconCargo } from "@/components/Icons";
 
 const WHY_ICONS = [IconFlow, IconGps, IconShield, IconCargo];
 
@@ -18,117 +18,125 @@ export function HomeView({ locale }: { locale: Locale }) {
   const h = dict.home;
   const quoteHref = ROUTES.quote[locale];
 
+  const marquee = [...h.ticker, ...h.ticker];
+
   return (
     <Chrome locale={locale}>
       <JsonLd data={breadcrumbJsonLd([{ name: dict.nav.home, url: ROUTES.home[locale] }])} />
 
       {/* ============ HERO ============ */}
       <section className="hero">
-        <div className="hero__media" aria-hidden="true">
-          <Photo slot={MEDIA.fleet} locale={locale} eager />
-        </div>
-        <div className="hero__scrim" aria-hidden="true" />
-        <Rings className="hero__rings rings-svg" cx="82%" cy="24%" />
+        <HeroIntro>
+          <div className="hero__media" aria-hidden="true">
+            <Photo slot={MEDIA.fleet} locale={locale} eager />
+          </div>
+          <div className="hero__scrim" aria-hidden="true" />
 
-        <div className="container hero__grid">
-          <div className="hero__content">
-            <span className="badge" data-reveal>
-              <span className="dot" aria-hidden />
-              {h.eyebrow}
-            </span>
-            <h1 className="h1 hero__title" data-reveal style={{ ["--d" as string]: "0.08s" }}>
+          <div className="hero__top" data-hero-el>
+            <span>Tegic Logistique — {dict.common.since}</span>
+            <span style={{ textAlign: "right" }}>{h.eyebrow}</span>
+          </div>
+
+          <div className="container hero__bottom">
+            <SplitHeading as="h1" className="h1 hero__title">
               {h.h1}
-            </h1>
-            <p className="hero__sub" data-reveal style={{ ["--d" as string]: "0.16s" }}>{h.sub}</p>
-            <div className="hero__ctas" data-reveal style={{ ["--d" as string]: "0.24s" }}>
-              <Link href={quoteHref} className="btn btn--primary btn--lg">
-                {dict.common.quoteCta} <span className="arr"><IconArrow /></span>
-              </Link>
-              <Link href={ROUTES.services[locale]} className="btn btn--ghost btn--lg">
-                {dict.common.allServices}
-              </Link>
+            </SplitHeading>
+            <div className="hero__row">
+              <p className="hero__sub" data-hero-el>{h.sub}</p>
+              <div className="hero__ctas" data-hero-el>
+                <Magnetic>
+                  <Link href={quoteHref} className="btn btn--green btn--lg">
+                    <span>{dict.common.quoteCta}</span> <span className="arr"><IconArrow /></span>
+                  </Link>
+                </Magnetic>
+                <Link href={ROUTES.services[locale]} className="btn btn--ghost btn--lg">
+                  {dict.common.allServices}
+                </Link>
+              </div>
+            </div>
+            <div className="hero__stats" data-hero-el>
+              {h.heroStats.map((s) => (
+                <div key={s.label} className="stat">
+                  <span className="stat__value"><CountUp value={s.value} /></span>
+                  <span className="stat__label">{s.label}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="hero__stats" data-reveal style={{ ["--d" as string]: "0.32s" }}>
-            {h.heroStats.map((s) => (
+          <span className="scrollcue" aria-hidden data-hero-el>SCROLL</span>
+        </HeroIntro>
+      </section>
+
+      {/* ============ STATEMENT ÉDITORIAL ============ */}
+      <section className="section section--paper">
+        <div className="container edito">
+          <span className="edito__label">(01) — {h.integratedTitle}</span>
+          <div style={{ display: "grid", gap: "2rem", justifyItems: "start" }}>
+            <SplitHeading as="p" className="statement">
+              {h.integratedText}
+            </SplitHeading>
+            <Link href={ROUTES.why[locale]} className="tlink">
+              {dict.nav.why} <span className="arr"><IconArrow /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ SERVICES — LISTE ÉDITORIALE ============ */}
+      <section className="section section--paper" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <Masthead no="02" title={h.servicesTitle} meta={`${dict.nav.services} — 05`} />
+          <ServiceRows locale={locale} dict={dict} />
+        </div>
+      </section>
+
+      {/* ============ GRANDE MARQUEE ============ */}
+      <div className="bigmarquee" aria-hidden="true">
+        <div className="bigmarquee__track" style={{ animation: "marquee 46s linear infinite" }}>
+          {marquee.map((it, i) => (
+            <span key={`${it}-${i}`} className="bigmarquee__item">
+              {i % 2 === 0 ? it : <b>{it}</b>}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ============ FLOTTE — MOMENT SOMBRE ============ */}
+      <section className="section section--dark">
+        <div className="container">
+          <div className="edito" style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}>
+            <span className="edito__label" style={{ color: "var(--g300)" }}>(03) — {dict.common.ownFleet}</span>
+            <div>
+              <ScrubScale>
+                <span className="fleet-num" aria-hidden="true">240</span>
+              </ScrubScale>
+              <SplitHeading as="h2" className="h2" >
+                {h.fleetTitle}
+              </SplitHeading>
+              <p className="lead" data-reveal style={{ color: "var(--muted)", marginTop: "1rem" }}>{h.fleetText}</p>
+            </div>
+          </div>
+
+          <div className="statgrid" data-reveal>
+            {dict.ta.fleet.stats.map((s) => (
               <div key={s.label} className="stat">
                 <span className="stat__value"><CountUp value={s.value} /></span>
                 <span className="stat__label">{s.label}</span>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <Ticker items={h.ticker} />
-
-      {/* ============ SERVICES ============ */}
-      <section className="section section--dark">
-        <div className="container">
-          <SectionHead eyebrow={dict.nav.services} title={h.servicesTitle} lead={h.servicesText} />
-
-          <div className="svc-grid" style={{ marginBottom: "1.4rem" }}>
-            <Link href={ROUTES.transportAmont[locale]} className="svc svc--featured" data-reveal>
-              <div style={{ display: "grid", gap: "0.8rem", alignContent: "start" }}>
-                <span className="mono" style={{ color: "var(--g300)" }}>{dict.servicesHub.flagship}</span>
-                <h3 className="h2" style={{ color: "#fff" }}>{dict.services.transportAmont.title}</h3>
-                <p style={{ color: "var(--muted)", maxWidth: "48ch" }}>{dict.services.transportAmont.desc}</p>
-                <span className="go" style={{ marginTop: "0.4rem" }}>
-                  {dict.common.learnMore} <span className="arr"><IconArrow /></span>
-                </span>
-              </div>
-              <div className="media media--169">
-                <Photo slot={MEDIA.heroTransport} locale={locale} />
-                <div className="media__scrim" aria-hidden />
-                <span className="media__tag">{dict.ta.heroRoute.from} → {dict.ta.heroRoute.to}</span>
-              </div>
-            </Link>
-          </div>
-
-          <ServiceCards locale={locale} dict={dict} exclude="transportAmont" goLabel={dict.common.learnMore} />
-        </div>
-      </section>
-
-      {/* ============ OPÉRATEUR INTÉGRÉ ============ */}
-      <section className="section section--deep">
-        <div className="container split">
-          <div className="media media--43" data-reveal>
-            <Photo slot={MEDIA.team} locale={locale} />
+          <div className="media media--169" data-parallax data-reveal style={{ marginTop: "clamp(2rem, 4vw, 3rem)" }}>
+            <Photo slot={MEDIA.distribution} locale={locale} />
             <div className="media__scrim" aria-hidden />
-            <span className="media__tag">Tegic · Casablanca</span>
+            <span className="media__tag">{dict.common.ownFleet} · Casablanca</span>
           </div>
-          <div>
-            <SectionHead eyebrow="Tegic" title={h.integratedTitle} lead={h.integratedText} />
-            <div className="hero__ctas">
-              <Link href={ROUTES.why[locale]} className="btn btn--ghost">
-                {dict.nav.why} <span className="arr"><IconArrow /></span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ============ FLOTTE ============ */}
-      <section className="section section--dark">
-        <div className="container">
-          <div className="split" style={{ alignItems: "center" }}>
-            <div>
-              <SectionHead eyebrow={dict.common.ownFleet} title={h.fleetTitle} lead={h.fleetText} />
-              <div className="statgrid" data-reveal>
-                {dict.ta.fleet.stats.slice(0, 4).map((s) => (
-                  <div key={s.label} className="stat">
-                    <span className="stat__value"><CountUp value={s.value} /></span>
-                    <span className="stat__label">{s.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="media media--43" data-reveal>
-              <Photo slot={MEDIA.distribution} locale={locale} />
-              <div className="media__scrim" aria-hidden />
-              <span className="media__tag"><IconTruck width={14} height={14} style={{ display: "inline" }} /> {dict.common.ownFleet}</span>
-            </div>
+          <div style={{ marginTop: "2rem" }} data-reveal>
+            <Link href={ROUTES.transportAmont[locale]} className="tlink" style={{ color: "var(--txt)" }}>
+              {dict.services.transportAmont.title} <span className="arr"><IconArrow /></span>
+            </Link>
           </div>
         </div>
       </section>
@@ -136,12 +144,12 @@ export function HomeView({ locale }: { locale: Locale }) {
       {/* ============ POURQUOI ============ */}
       <section className="section section--paper">
         <div className="container">
-          <SectionHead eyebrow={dict.nav.why} title={h.whyTitle} />
+          <Masthead no="04" title={h.whyTitle} meta="Tegic — 3PL" />
           <div className="pillars">
             {dict.why.pillars.map((p, i) => {
               const Icon = WHY_ICONS[i];
               return (
-                <article key={p.title} className="pillar" data-reveal style={{ ["--d" as string]: `${i * 0.07}s` }}>
+                <article key={p.title} className="pillar" data-reveal style={{ ["--d" as string]: `${i * 0.06}s` }}>
                   <Icon className="icon" />
                   <span className="pillar__num">{String(i + 1).padStart(2, "0")}</span>
                   <h3>{p.title}</h3>
@@ -153,22 +161,41 @@ export function HomeView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* ============ SECTEURS ============ */}
-      <section className="section section--paper2">
+      {/* ============ SECTEURS — RAIL ============ */}
+      <section className="section section--paper2 section--flush" style={{ paddingBlock: "var(--pad-section)" }}>
         <div className="container">
-          <SectionHead eyebrow={dict.nav.sectors} title={h.sectorsTitle} lead={h.sectorsText} />
-          <div className="svc-grid">
-            {dict.sectors.items.slice(0, 6).map((s, i) => (
-              <article key={s.title} className="svc svc--paper" data-reveal style={{ ["--d" as string]: `${i * 0.05}s` }}>
+          <Masthead no="05" title={h.sectorsTitle} lead={h.sectorsText} />
+        </div>
+        <div className="rail">
+          {dict.sectors.items.map((s, i) => (
+            <article key={s.title} className="railcard" data-reveal style={{ ["--d" as string]: `${i * 0.05}s` }}>
+              <span className="railcard__no">{String(i + 1).padStart(2, "0")}</span>
+              <div style={{ display: "grid", gap: "0.6rem" }}>
                 <h3 className="h3">{s.title}</h3>
                 <p>{s.text}</p>
-              </article>
-            ))}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="container" data-reveal>
+          <Link href={ROUTES.sectors[locale]} className="tlink">
+            {dict.nav.sectors} <span className="arr"><IconArrow /></span>
+          </Link>
+        </div>
+      </section>
+
+      {/* ============ ÉQUIPE / PREUVE ============ */}
+      <section className="section section--paper">
+        <div className="container photoduo">
+          <div className="media media--tall media--frame" data-parallax data-reveal>
+            <Photo slot={MEDIA.team} locale={locale} />
+            <div className="media__scrim" aria-hidden />
+            <span className="media__tag">Tegic · Casablanca</span>
           </div>
-          <div style={{ marginTop: "1.8rem" }} data-reveal>
-            <Link href={ROUTES.sectors[locale]} className="btn btn--ghost on-paper">
-              {dict.nav.sectors} <span className="arr"><IconArrow /></span>
-            </Link>
+          <div className="media media--43 media--frame" data-parallax data-reveal>
+            <Photo slot={MEDIA.hq} locale={locale} />
+            <div className="media__scrim" aria-hidden />
+            <span className="media__tag">{dict.about.hqTitle}</span>
           </div>
         </div>
       </section>

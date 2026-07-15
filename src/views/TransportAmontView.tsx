@@ -6,11 +6,10 @@ import type { Locale } from "@/lib/site";
 import { JsonLd, faqJsonLd, transportServiceJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
-import { Rings } from "@/components/Rings";
 import { CountUp } from "@/components/CountUp";
-import { MoroccoRoute } from "@/components/MoroccoRoute";
 import { TrackingConsole } from "@/components/TrackingConsole";
-import { SectionHead, CtaBand, FaqList, ServiceCards, FleetBars, FlowCompare, Ticker } from "@/components/Sections";
+import { Masthead, CtaBand, FaqList, ServiceRows, FleetBars, FlowCompare } from "@/components/Sections";
+import { HeroIntro, SplitHeading, PinnedProcess, ScrubScale, Magnetic } from "@/components/motion/Motion";
 import { IconPort, IconAir, IconBorder, IconArrow, IconLeafBolt, IconFlow, IconGps, IconShield, IconCargo } from "@/components/Icons";
 
 const PICKUP_ICONS = [IconPort, IconAir, IconBorder];
@@ -38,99 +37,71 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
 
       {/* ============ HERO CINÉMATIQUE ============ */}
       <section className="hero">
-        <div className="hero__media" aria-hidden="true">
-          <Photo slot={MEDIA.heroTransport} locale={locale} eager />
-        </div>
-        <div className="hero__scrim" aria-hidden="true" />
-        <Rings className="hero__rings rings-svg" cx="86%" cy="18%" />
+        <HeroIntro>
+          <div className="hero__media" aria-hidden="true">
+            <Photo slot={MEDIA.heroTransport} locale={locale} eager />
+          </div>
+          <div className="hero__scrim" aria-hidden="true" />
 
-        <div className="container hero__grid">
-          <div className="hero__content">
-            <span className="badge" data-reveal>
+          <div className="hero__top" data-hero-el>
+            <span>{dict.nav.services} — {dict.services.transportAmont.title}</span>
+            <span style={{ textAlign: "right" }}>{ta.heroRoute.from} → {ta.heroRoute.to}</span>
+          </div>
+
+          <div className="container hero__bottom">
+            <span className="badge" data-hero-el>
               <span className="dot" aria-hidden />
               {ta.badge}
             </span>
-            <h1 className="h1 hero__title" data-reveal style={{ ["--d" as string]: "0.08s" }}>
+            <SplitHeading as="h1" className="h1 hero__title hero__title--long">
               {ta.h1}
-            </h1>
-            <p className="hero__sub" data-reveal style={{ ["--d" as string]: "0.16s" }}>
-              {ta.sub}
-            </p>
-            <div className="hero__ctas" data-reveal style={{ ["--d" as string]: "0.24s" }}>
-              <Link href={quoteHref} className="btn btn--primary btn--lg">
-                {dict.common.quoteTransportCta} <span className="arr"><IconArrow /></span>
-              </Link>
-              <Link href={contactHref} className="btn btn--ghost btn--lg">
-                {dict.common.expertCta}
-              </Link>
+            </SplitHeading>
+            <div className="hero__row">
+              <p className="hero__sub" data-hero-el>{ta.sub}</p>
+              <div className="hero__ctas" data-hero-el>
+                <Magnetic>
+                  <Link href={quoteHref} className="btn btn--green btn--lg">
+                    <span>{dict.common.quoteTransportCta}</span> <span className="arr"><IconArrow /></span>
+                  </Link>
+                </Magnetic>
+                <Link href={contactHref} className="btn btn--ghost btn--lg">
+                  {dict.common.expertCta}
+                </Link>
+              </div>
+            </div>
+            <div className="hero__stats" data-hero-el>
+              {ta.heroStats.map((s) => (
+                <div key={s.label} className="stat">
+                  <span className="stat__value"><CountUp value={s.value} /></span>
+                  <span className="stat__label">{s.label}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="hero__stats" data-reveal style={{ ["--d" as string]: "0.32s" }}>
-            {ta.heroStats.map((s) => (
-              <div key={s.label} className="stat">
-                <span className="stat__value"><CountUp value={s.value} /></span>
-                <span className="stat__label">{s.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* carte Maroc subtile, grands écrans */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            right: "clamp(1rem, 4vw, 4rem)",
-            top: "110px",
-            bottom: "180px",
-            width: "min(30vw, 340px)",
-            opacity: 0.85,
-            pointerEvents: "none",
-          }}
-          className="hero-map-wrap"
-        >
-          <MoroccoRoute
-            from={ta.heroRoute.from}
-            to={ta.heroRoute.to}
-            status={ta.heroRoute.status}
-            className="hero-map"
-          />
-        </div>
+          <span className="scrollcue" aria-hidden data-hero-el>SCROLL</span>
+        </HeroIntro>
       </section>
 
-      <Ticker items={dict.home.ticker} />
-
-      {/* ============ ANSWER-FIRST (GEO) ============ */}
-      <section className="section section--dark" style={{ paddingBlock: "clamp(2.6rem, 5vw, 4rem)" }}>
-        <div className="container">
-          <div
-            data-reveal
-            style={{
-              border: "1px solid var(--line)",
-              borderLeft: "3px solid var(--g400)",
-              borderRadius: "var(--r-md)",
-              padding: "clamp(1.3rem, 3vw, 2rem)",
-              background: "var(--g900)",
-              display: "grid",
-              gap: "0.6rem",
-            }}
-          >
-            <span className="mono" style={{ color: "var(--g300)" }}>{ta.essential.title}</span>
-            <p style={{ maxWidth: "88ch", color: "var(--txt)", fontSize: "1.02rem" }}>{ta.essential.text}</p>
-          </div>
+      {/* ============ L'ESSENTIEL (answer-first / GEO) ============ */}
+      <section className="section section--paper">
+        <div className="container edito">
+          <span className="edito__label">{ta.essential.title}</span>
+          <SplitHeading as="p" className="statement">
+            {ta.essential.text}
+          </SplitHeading>
         </div>
       </section>
 
       {/* ============ POINTS D'ENLÈVEMENT ============ */}
-      <section className="section section--paper" id="enlevements">
+      <section className="section section--paper2" id="enlevements">
         <div className="container">
-          <SectionHead eyebrow="Transport amont" title={ta.pickup.title} lead={ta.pickup.text} />
+          <Masthead no="01" title={ta.pickup.title} lead={ta.pickup.text} />
           <div className="cards3">
             {ta.pickup.cards.map((card, i) => {
               const Icon = PICKUP_ICONS[i];
               return (
-                <article key={card.title} className="pcard" data-reveal style={{ ["--d" as string]: `${i * 0.08}s` }}>
+                <article key={card.title} className="pcard" data-reveal style={{ ["--d" as string]: `${i * 0.07}s` }}>
                   <Icon className="icon" />
                   <span className="kicker">{card.kicker}</span>
                   <h3 className="h3">{card.title}</h3>
@@ -147,11 +118,34 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* ============ PROCESS ============ */}
-      <section className="section section--deep" id="process">
-        <div className="container">
-          <SectionHead eyebrow="Process" title={ta.process.title} lead={ta.process.text} />
-          <ol className="tl" data-reveal>
+      {/* ============ PROCESS — ÉPINGLÉ HORIZONTAL ============ */}
+      <section className="section section--paper section--flush" id="process" style={{ paddingBlock: "var(--pad-section)" }}>
+        <div className="only-desktop">
+          <PinnedProcess>
+            <div style={{ minHeight: "100svh", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", gap: "2rem", paddingBlock: "5rem", overflow: "clip" }}>
+              <div className="container">
+                <Masthead no="02" title={ta.process.title} lead={ta.process.text} />
+              </div>
+              <div className="proc">
+                <div className="proc__bar"><i /><span className="truckdot" aria-hidden /></div>
+                <div className="proc__track">
+                  {ta.process.steps.map((s, i) => (
+                    <div key={s.title} className={`proc__step${i === ta.process.steps.length - 1 ? " proc__step--last" : ""}`}>
+                      <span className="proc__no">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="proc__title">{s.title}</span>
+                      <span className="proc__detail">{s.detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </PinnedProcess>
+        </div>
+
+        {/* fallback vertical mobile */}
+        <div className="container only-mobile">
+          <Masthead no="02" title={ta.process.title} lead={ta.process.text} />
+          <ol className="tl">
             {ta.process.steps.map((s, i) => (
               <li key={s.title} className="tl__step">
                 <span className="tl__num">{String(i + 1).padStart(2, "0")}</span>
@@ -160,8 +154,10 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ol>
+        </div>
 
-          <div className="narr" data-reveal style={{ marginTop: "clamp(2.5rem, 5vw, 4rem)" }}>
+        <div className="container" style={{ marginTop: "clamp(2rem, 4vw, 3rem)" }}>
+          <div className="narr" data-reveal>
             <div style={{ display: "grid", gap: "1rem" }}>
               <span className="eyebrow">{ta.process.narrativeTitle}</span>
               <p className="lead" style={{ color: "var(--txt)" }}>{ta.process.narrativeText}</p>
@@ -171,18 +167,17 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* ============ FLOTTE ============ */}
+      {/* ============ FLOTTE — MOMENT SOMBRE ============ */}
       <section className="section section--dark" id="flotte">
         <div className="container">
-          <div className="split" style={{ alignItems: "end", marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
+          <ScrubScale>
+            <span className="fleet-num" aria-hidden="true">240</span>
+          </ScrubScale>
+          <div className="edito" style={{ marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
+            <span className="edito__label" style={{ color: "var(--g300)" }}>(03) — {dict.common.ownFleet}</span>
             <div>
-              <span className="fleet-num" data-reveal aria-hidden="true">240</span>
-              <SectionHead title={ta.fleet.title} lead={ta.fleet.text} />
-            </div>
-            <div className="media media--43" data-reveal>
-              <Photo slot={MEDIA.fleet} locale={locale} />
-              <div className="media__scrim" aria-hidden />
-              <span className="media__tag">{dict.common.ownFleet} · Casablanca</span>
+              <SplitHeading as="h2" className="h2">{ta.fleet.title}</SplitHeading>
+              <p className="lead" data-reveal style={{ color: "var(--muted)", marginTop: "1rem" }}>{ta.fleet.text}</p>
             </div>
           </div>
 
@@ -195,16 +190,23 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
             ))}
           </div>
 
-          <div className="split" style={{ marginTop: "clamp(2.5rem, 5vw, 4rem)", alignItems: "start" }}>
+          <div className="split split--start" style={{ marginTop: "clamp(2.5rem, 5vw, 4rem)" }}>
             <div>
-              <h3 className="h3" style={{ marginBottom: "1.4rem" }} data-reveal>{ta.fleet.detailTitle}</h3>
+              <h3 className="h3" style={{ marginBottom: "1.4rem", color: "#fff" }} data-reveal>{ta.fleet.detailTitle}</h3>
               <FleetBars detail={ta.fleet.detail} />
             </div>
-            <div className="rse" data-reveal>
-              <IconLeafBolt className="icon" />
-              <div style={{ display: "grid", gap: "0.6rem" }}>
-                <h3 className="h3">{ta.fleet.rse.title}</h3>
-                <p style={{ color: "var(--muted)" }}>{ta.fleet.rse.text}</p>
+            <div style={{ display: "grid", gap: "1.2rem" }}>
+              <div className="media media--169" data-parallax data-reveal>
+                <Photo slot={MEDIA.fleet} locale={locale} />
+                <div className="media__scrim" aria-hidden />
+                <span className="media__tag">{dict.common.ownFleet} · Casablanca</span>
+              </div>
+              <div className="rse" data-reveal>
+                <IconLeafBolt className="icon" />
+                <div style={{ display: "grid", gap: "0.6rem" }}>
+                  <h3 className="h3" style={{ color: "#fff" }}>{ta.fleet.rse.title}</h3>
+                  <p>{ta.fleet.rse.text}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -213,32 +215,16 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
 
       {/* ============ GPS ============ */}
       <section className="section section--deep" id="gps">
-        <div className="container split" style={{ alignItems: "start" }}>
+        <div className="container split split--start">
           <div>
-            <SectionHead eyebrow="GPS · Tracking" title={ta.gps.title} lead={ta.gps.text} />
-            <ol style={{ display: "grid", gap: "1.1rem" }}>
+            <Masthead no="04" title={ta.gps.title} lead={ta.gps.text} />
+            <ol style={{ display: "grid", gap: "1rem" }}>
               {ta.gps.blocks.map((b, i) => (
-                <li
-                  key={b.title}
-                  data-reveal
-                  style={{
-                    ["--d" as string]: `${i * 0.07}s`,
-                    display: "grid",
-                    gridTemplateColumns: "auto 1fr",
-                    gap: "1rem",
-                    alignItems: "start",
-                    border: "1px solid var(--line)",
-                    borderRadius: "var(--r-md)",
-                    padding: "1.05rem 1.2rem",
-                    background: "rgba(4,17,8,0.45)",
-                  }}
-                >
-                  <span className="mono" style={{ color: "var(--g300)", paddingTop: "0.15rem" }}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span style={{ display: "grid", gap: "0.25rem" }}>
-                    <strong style={{ fontFamily: "var(--font-display)", fontSize: "1.02rem", color: "#fff" }}>{b.title}</strong>
-                    <span style={{ color: "var(--muted)", fontSize: "0.92rem" }}>{b.text}</span>
+                <li key={b.title} className="gpsblock" data-reveal style={{ ["--d" as string]: `${i * 0.06}s` }}>
+                  <span className="no">{String(i + 1).padStart(2, "0")}</span>
+                  <span>
+                    <strong>{b.title}</strong>
+                    <span className="txt">{b.text}</span>
                   </span>
                 </li>
               ))}
@@ -251,12 +237,12 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
       {/* ============ POURQUOI TEGIC ============ */}
       <section className="section section--paper" id="pourquoi">
         <div className="container">
-          <SectionHead eyebrow={dict.nav.why} title={ta.why.title} lead={ta.why.text} />
+          <Masthead no="05" title={ta.why.title} lead={ta.why.text} />
           <div className="pillars">
             {ta.why.blocks.map((b, i) => {
               const Icon = WHY_ICONS[i];
               return (
-                <article key={b.title} className="pillar" data-reveal style={{ ["--d" as string]: `${i * 0.07}s` }}>
+                <article key={b.title} className="pillar" data-reveal style={{ ["--d" as string]: `${i * 0.06}s` }}>
                   <Icon className="icon" />
                   <span className="pillar__num">{String(i + 1).padStart(2, "0")}</span>
                   <h3>{b.title}</h3>
@@ -271,16 +257,16 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
       {/* ============ FAQ ============ */}
       <section className="section section--paper2" id="faq">
         <div className="container">
-          <SectionHead eyebrow="FAQ" title={ta.faq.title} lead={ta.faq.text} />
+          <Masthead no="06" title={ta.faq.title} lead={ta.faq.text} />
           <FaqList items={ta.faq.items} />
         </div>
       </section>
 
       {/* ============ AUTRES SERVICES ============ */}
-      <section className="section section--dark">
+      <section className="section section--paper">
         <div className="container">
-          <SectionHead eyebrow={dict.nav.services} title={ta.others.title} lead={ta.others.text} />
-          <ServiceCards locale={locale} dict={dict} exclude="transportAmont" goLabel={dict.common.learnMore} />
+          <Masthead no="07" title={ta.others.title} lead={ta.others.text} />
+          <ServiceRows locale={locale} dict={dict} exclude="transportAmont" />
         </div>
       </section>
 
