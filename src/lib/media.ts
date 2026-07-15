@@ -37,13 +37,13 @@ export const MEDIA = {
       en: "Tegic-liveried rigid trucks lined up at the Casablanca logistics platform",
     },
   },
-  /** Photo 7 — camion Fuso tegic devant l'entrée du siège. Distribution / accueil. */
+  /** Photo #37 — porteurs tegic à quai et tracteur au premier plan : les deux gabarits de la flotte. */
   distribution: {
-    photo: "/media/photos/truck-tegic-hq.jpg",
+    photo: "/media/photos/fleet-dock-mixed.jpg",
     fallback: "/media/placeholders/truck-city.svg",
     alt: {
-      fr: "Camion de distribution Tegic prêt au départ devant le siège de Casablanca",
-      en: "Tegic distribution truck ready for departure outside the Casablanca headquarters",
+      fr: "Porteurs de distribution Tegic à quai et tracteur lourd au premier plan sur la plateforme de Casablanca",
+      en: "Tegic distribution rigids at the dock with a heavy tractor unit in the foreground at the Casablanca platform",
     },
   },
   /** Photo 8 — façade du siège tegic, enseigne sur le toit. Qui sommes-nous / contact. */
