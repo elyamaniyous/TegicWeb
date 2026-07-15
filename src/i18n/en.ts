@@ -550,6 +550,27 @@ export const en: Dict = {
     privacy: "Your information is only used to process your request. Never shared with third parties.",
   },
 
+  network: {
+    title: "A global network. One hub: Morocco.",
+    text: "Sea and air freight forwarding: we connect your origins to Morocco's points of entry along the world's main corridors — then take over on the ground, with our own fleet, all the way to your destination.",
+    badge: "Morocco · Strategic hub",
+    hubsTitle: "Morocco hubs",
+    portsLabel: "Ports",
+    airportsLabel: "Airports",
+    ports: ["Tanger Med", "Casablanca", "Jorf Lasfar", "Agadir"],
+    airports: ["Casablanca Mohammed V", "Tanger Ibn Battouta", "Marrakech Menara", "Agadir Al Massira"],
+    maritime: "Sea",
+    air: "Air",
+    cities: {
+      newYork: "New York",
+      rotterdam: "Rotterdam",
+      algeciras: "Algeciras",
+      jebelAli: "Jebel Ali",
+      shanghai: "Shanghai",
+      singapore: "Singapore",
+    },
+  },
+
   footer: {
     baseline: "The 3PL of choice for leading brands in Morocco. Customs transit · Transport · Warehousing · Distribution.",
     servicesTitle: "Services",

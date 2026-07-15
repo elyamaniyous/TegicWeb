@@ -7,7 +7,8 @@ import { JsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
 import { Rings } from "@/components/Rings";
-import { SectionHead, CtaBand, ServiceCards } from "@/components/Sections";
+import { SectionHead, CtaBand, ServiceCards, Masthead } from "@/components/Sections";
+import { WorldNetwork } from "@/components/WorldNetwork";
 import { IconArrow } from "@/components/Icons";
 
 type LightKey = "transitDouane" | "entreposage" | "distribution" | "freightForwarding";
@@ -74,6 +75,17 @@ export function ServiceLightView({ locale, service }: { locale: Locale; service:
           </div>
         </div>
       </section>
+
+      {service === "freightForwarding" ? (
+        <section className="section section--dark">
+          <div className="container">
+            <Masthead no="01" title={dict.network.title} lead={dict.network.text} />
+            <div data-reveal>
+              <WorldNetwork dict={dict.network} />
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="section section--dark">
         <div className="container">

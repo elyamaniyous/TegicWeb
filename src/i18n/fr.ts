@@ -550,6 +550,27 @@ export const fr = {
     privacy: "Vos informations ne sont utilisées que pour traiter votre demande. Aucune diffusion à des tiers.",
   },
 
+  network: {
+    title: "Un réseau mondial. Un hub : le Maroc.",
+    text: "Freight forwarding maritime et aérien : nous connectons vos origines aux points d'entrée marocains par les grands corridors mondiaux — puis nous prenons le relais au sol, en flotte propre, jusqu'à votre destination.",
+    badge: "Maroc · Hub stratégique",
+    hubsTitle: "Hubs Maroc",
+    portsLabel: "Ports",
+    airportsLabel: "Aéroports",
+    ports: ["Tanger Med", "Casablanca", "Jorf Lasfar", "Agadir"],
+    airports: ["Casablanca Mohammed V", "Tanger Ibn Battouta", "Marrakech Menara", "Agadir Al Massira"],
+    maritime: "Maritime",
+    air: "Aérien",
+    cities: {
+      newYork: "New York",
+      rotterdam: "Rotterdam",
+      algeciras: "Algéciras",
+      jebelAli: "Jebel Ali",
+      shanghai: "Shanghai",
+      singapore: "Singapour",
+    },
+  },
+
   footer: {
     baseline: "Le 3PL de référence des grandes marques au Maroc. Transit · Transport · Entreposage · Distribution.",
     servicesTitle: "Services",

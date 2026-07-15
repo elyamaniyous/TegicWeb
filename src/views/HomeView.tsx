@@ -8,6 +8,7 @@ import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
 import { CountUp } from "@/components/CountUp";
 import { Masthead, ServiceRows, CtaBand } from "@/components/Sections";
+import { WorldNetwork } from "@/components/WorldNetwork";
 import { HeroIntro, SplitHeading, ScrubScale, Magnetic } from "@/components/motion/Motion";
 import { IconArrow, IconFlow, IconGps, IconShield, IconCargo } from "@/components/Icons";
 
@@ -141,10 +142,20 @@ export function HomeView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      {/* ============ RÉSEAU MONDIAL ============ */}
+      <section className="section section--dark" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <Masthead no="04" title={dict.network.title} lead={dict.network.text} />
+          <div data-reveal>
+            <WorldNetwork dict={dict.network} />
+          </div>
+        </div>
+      </section>
+
       {/* ============ POURQUOI ============ */}
       <section className="section section--paper">
         <div className="container">
-          <Masthead no="04" title={h.whyTitle} meta="Tegic — 3PL" />
+          <Masthead no="05" title={h.whyTitle} meta="Tegic — 3PL" />
           <div className="pillars">
             {dict.why.pillars.map((p, i) => {
               const Icon = WHY_ICONS[i];
@@ -164,7 +175,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       {/* ============ SECTEURS — RAIL ============ */}
       <section className="section section--paper2 section--flush" style={{ paddingBlock: "var(--pad-section)" }}>
         <div className="container">
-          <Masthead no="05" title={h.sectorsTitle} lead={h.sectorsText} />
+          <Masthead no="06" title={h.sectorsTitle} lead={h.sectorsText} />
         </div>
         <div className="rail">
           {dict.sectors.items.map((s, i) => (
