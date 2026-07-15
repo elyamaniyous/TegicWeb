@@ -30,7 +30,8 @@ export type Lead = {
   message?: string;
 };
 
-const DATA_DIR = path.join(process.cwd(), "data");
+/** Surchargeable via DATA_DIR (ex. volume persistant monté sur /app/data chez Railway). */
+const DATA_DIR = process.env.DATA_DIR ?? path.join(process.cwd(), "data");
 const FILE = path.join(DATA_DIR, "leads.json");
 
 let queue: Promise<unknown> = Promise.resolve();

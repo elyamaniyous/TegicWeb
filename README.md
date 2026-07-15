@@ -104,3 +104,21 @@ Build standard Next.js (`npm run build && npm start`), Node ≥ 20.
 Renseigner `NEXT_PUBLIC_SITE_URL`, `ADMIN_TOKEN` et le SMTP en production.
 Reste à fournir côté Tegic : numéro de téléphone officiel (footer « Nous
 appeler » pointe vers la page contact en attendant) et liens réseaux sociaux.
+
+### Railway
+
+Le dépôt contient `railway.json` (builder Nixpacks, healthcheck `/`,
+redémarrage sur échec). `next start` écoute automatiquement le `PORT`
+injecté par Railway.
+
+1. **Service** : New Project → *Deploy from GitHub repo* → `TegicWeb`
+   (branche `main`) — ou `railway up` via la CLI.
+2. **Variables** : `ADMIN_TOKEN` (obligatoire pour `/admin/leads`),
+   `NEXT_PUBLIC_SITE_URL` (URL publique du service), puis les `SMTP_*`
+   quand disponibles.
+3. **Volume** (persistance du mini-CRM) : attacher un volume monté sur
+   `/app/data` — le store de leads (`data/leads.json`) y survit aux
+   redéploiements. Sans volume, les leads sont perdus à chaque déploiement
+   (l'email de notification reste alors le seul canal).
+4. **Domaine** : *Settings → Networking → Generate Domain*, puis brancher
+   le domaine final (ex. `www.tegiclogistique.com`) par CNAME.
