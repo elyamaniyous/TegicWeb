@@ -100,6 +100,42 @@ export const MEDIA = {
       en: "Tegic forklift at work in the warehouse aisles",
     },
   },
+  /** Visuel généré — zone cargo aéroportuaire au crépuscule (enlèvement aérien). */
+  airportCargo: {
+    photo: "/media/photos/airport-cargo.jpg",
+    fallback: "/media/placeholders/port-cranes.svg",
+    alt: {
+      fr: "Fret aérien sur le tarmac : palettes cargo prêtes à l'enlèvement à l'aéroport Mohammed V",
+      en: "Air freight on the apron: cargo pallets ready for pickup at Mohammed V airport",
+    },
+  },
+  /** Visuel généré — poste frontière routier de nuit (transport international). */
+  borderNight: {
+    photo: "/media/photos/border-night.jpg",
+    fallback: "/media/placeholders/truck-highway.svg",
+    alt: {
+      fr: "Semi-remorques au poste frontière de nuit — transport routier international vers le Maroc",
+      en: "Semi-trailers at a border crossing by night — international road transport to Morocco",
+    },
+  },
+  /** Visuel généré — camion électrique Tegic en charge (engagement RSE 2026). */
+  electricTruck: {
+    photo: "/media/photos/electric-truck-tegic.jpg",
+    fallback: "/media/placeholders/truck-city.svg",
+    alt: {
+      fr: "Camion électrique aux couleurs Tegic en charge sur la plateforme logistique — flotte électrique dès 2026",
+      en: "Tegic-liveried electric truck charging at the logistics platform — electric fleet from 2026",
+    },
+  },
+  /** Visuel généré — terminal à conteneurs au couchant (freight forwarding). */
+  portSunset: {
+    photo: "/media/photos/port-cranes-sunset.jpg",
+    fallback: "/media/placeholders/port-cranes.svg",
+    alt: {
+      fr: "Portiques et conteneurs au terminal maritime — flux internationaux vers le Maroc",
+      en: "Gantry cranes and containers at the sea terminal — international flows to Morocco",
+    },
+  },
 } as const;
 
 export type MediaKey = keyof typeof MEDIA;

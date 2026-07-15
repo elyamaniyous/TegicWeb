@@ -16,7 +16,7 @@ const MEDIA_BY_SERVICE: Record<LightKey, MediaKey> = {
   transitDouane: "dockLoading",
   entreposage: "warehouse",
   distribution: "distribution",
-  freightForwarding: "heroTransport",
+  freightForwarding: "portSunset",
 };
 
 export function ServiceLightView({ locale, service }: { locale: Locale; service: LightKey }) {

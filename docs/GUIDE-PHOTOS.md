@@ -1,5 +1,12 @@
 # Guide d'intégration des photos réelles Tegic
 
+> ✅ **Sélection intégrée** (juillet 2026) depuis l'issue GitHub #1 (75 visuels reçus).
+> Retenus : #70 (⭐ hero semi-remorque + siège), #36 (flotte alignée), #74 (Fuso siège),
+> #72 (façade siège), #68 (grand hall entrepôt), #22 (gerbage), #31 (chargement conteneur),
+> #25 (équipe), #15 (vertical), + visuels générés #01 (aéroport), #03 (frontière),
+> #07 (camion électrique tegic), #11 (port au couchant). Les fichiers optimisés sont
+> dans `public/media/photos/` ; remplacer un fichier suffit pour changer le visuel.
+
 Le site est câblé sur des **slots de photos nommés**. Il suffit de déposer
 les fichiers JPG dans `public/media/photos/` avec **exactement** les noms
 ci-dessous : chaque page les utilise automatiquement au prochain

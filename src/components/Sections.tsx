@@ -37,7 +37,7 @@ const SERVICE_THUMBS: Record<string, MediaKey> = {
   transportAmont: "heroTransport",
   entreposage: "warehouse",
   distribution: "distribution",
-  freightForwarding: "fleet",
+  freightForwarding: "portSunset",
 };
 
 export function ServiceRows({

@@ -100,8 +100,12 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
           <div className="cards3">
             {ta.pickup.cards.map((card, i) => {
               const Icon = PICKUP_ICONS[i];
+              const media = [MEDIA.dockLoading, MEDIA.airportCargo, MEDIA.borderNight][i];
               return (
                 <article key={card.title} className="pcard" data-reveal style={{ ["--d" as string]: `${i * 0.07}s` }}>
+                  <div className="pcard__media">
+                    <Photo slot={media} locale={locale} />
+                  </div>
                   <Icon className="icon" />
                   <span className="kicker">{card.kicker}</span>
                   <h3 className="h3">{card.title}</h3>
@@ -201,11 +205,16 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
                 <div className="media__scrim" aria-hidden />
                 <span className="media__tag">{dict.common.ownFleet} · Casablanca</span>
               </div>
-              <div className="rse" data-reveal>
-                <IconLeafBolt className="icon" />
-                <div style={{ display: "grid", gap: "0.6rem" }}>
-                  <h3 className="h3" style={{ color: "#fff" }}>{ta.fleet.rse.title}</h3>
-                  <p>{ta.fleet.rse.text}</p>
+              <div className="rse" data-reveal style={{ gridTemplateColumns: "1fr", padding: 0, overflow: "clip" }}>
+                <div className="media" style={{ aspectRatio: "16 / 7", borderRadius: 0, border: "none" }}>
+                  <Photo slot={MEDIA.electricTruck} locale={locale} />
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "1.4rem", alignItems: "start", padding: "1.6rem 1.8rem 1.9rem" }}>
+                  <IconLeafBolt className="icon" />
+                  <div style={{ display: "grid", gap: "0.6rem" }}>
+                    <h3 className="h3" style={{ color: "#fff" }}>{ta.fleet.rse.title}</h3>
+                    <p>{ta.fleet.rse.text}</p>
+                  </div>
                 </div>
               </div>
             </div>
