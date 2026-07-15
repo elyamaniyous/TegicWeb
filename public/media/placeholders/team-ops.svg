@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="tsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a2214"/>
+      <stop offset="1" stop-color="#041108"/>
+    </linearGradient>
+    <radialGradient id="tglow" cx="0.5" cy="0.35" r="0.6">
+      <stop offset="0" stop-color="#2fa44a" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#2fa44a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain7">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#tsky)"/>
+  <rect width="1600" height="1000" fill="url(#tglow)"/>
+  <!-- verrière -->
+  <g stroke="#7fe08f" stroke-opacity="0.28" stroke-width="9" stroke-linecap="round">
+    <path d="M200 100 H520"/><path d="M680 100 H1000"/><path d="M1160 100 H1480"/>
+  </g>
+  <!-- palettes / cartons -->
+  <g fill="#0e2f1a" stroke="#145426" stroke-width="4">
+    <rect x="120" y="520" width="240" height="200" rx="8"/>
+    <rect x="150" y="380" width="180" height="140" rx="8"/>
+    <rect x="1240" y="520" width="240" height="200" rx="8"/>
+    <rect x="1270" y="380" width="180" height="140" rx="8"/>
+  </g>
+  <!-- silhouettes équipe -->
+  <g fill="#020a05">
+    <g>
+      <circle cx="640" cy="430" r="34"/>
+      <path d="M590 720 V540 q0 -60 50 -60 q50 0 50 60 V720 Z"/>
+    </g>
+    <g>
+      <circle cx="820" cy="410" r="34"/>
+      <path d="M770 720 V520 q0 -60 50 -60 q50 0 50 60 V720 Z"/>
+    </g>
+    <g>
+      <circle cx="990" cy="440" r="30"/>
+      <path d="M946 720 V550 q0 -54 44 -54 q44 0 44 54 V720 Z"/>
+    </g>
+  </g>
+  <!-- casquettes vertes -->
+  <g fill="#145426">
+    <path d="M606 420 a34 34 0 0 1 68 0 Z"/>
+    <path d="M786 400 a34 34 0 0 1 68 0 Z"/>
+    <path d="M960 430 a30 30 0 0 1 60 0 Z"/>
+  </g>
+  <rect y="720" width="1600" height="280" fill="#020a05"/>
+  <g stroke="#7fe08f" stroke-opacity="0.25" stroke-width="4" stroke-dasharray="24 30">
+    <path d="M0 830 H1600"/>
+  </g>
+  <rect width="1600" height="1000" filter="url(#grain7)" opacity="0.5"/>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="csky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a2214"/>
+      <stop offset="1" stop-color="#041108"/>
+    </linearGradient>
+    <filter id="grain5">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#csky)"/>
+  <!-- skyline -->
+  <g fill="#020a05">
+    <rect x="60" y="360" width="180" height="360"/>
+    <rect x="280" y="300" width="140" height="420"/>
+    <rect x="460" y="420" width="200" height="300"/>
+    <rect x="1180" y="340" width="160" height="380"/>
+    <rect x="1380" y="420" width="170" height="300"/>
+  </g>
+  <g fill="#145426" fill-opacity="0.4">
+    <rect x="90" y="400" width="26" height="26"/><rect x="140" y="400" width="26" height="26"/>
+    <rect x="90" y="460" width="26" height="26"/><rect x="140" y="460" width="26" height="26"/>
+    <rect x="310" y="340" width="22" height="22"/><rect x="360" y="340" width="22" height="22"/>
+    <rect x="310" y="396" width="22" height="22"/><rect x="360" y="396" width="22" height="22"/>
+    <rect x="1210" y="380" width="24" height="24"/><rect x="1260" y="380" width="24" height="24"/>
+  </g>
+  <rect y="720" width="1600" height="280" fill="#020a05"/>
+  <!-- camion de distribution -->
+  <g>
+    <rect x="620" y="470" width="460" height="220" rx="14" fill="#0e2f1a" stroke="#145426" stroke-width="5"/>
+    <g fill="none" stroke="#7fe08f" stroke-opacity="0.3">
+      <circle cx="850" cy="580" r="62" stroke-width="18"/>
+      <circle cx="850" cy="580" r="30" stroke-width="12"/>
+    </g>
+    <path d="M1080 550 h100 l52 66 v74 h-152 Z" fill="#0a2214" stroke="#145426" stroke-width="5"/>
+    <rect x="1102" y="568" width="52" height="40" rx="6" fill="#07190e"/>
+    <circle cx="720" cy="712" r="40" fill="#020a05" stroke="#145426" stroke-width="8"/>
+    <circle cx="1010" cy="712" r="40" fill="#020a05" stroke="#145426" stroke-width="8"/>
+    <circle cx="1160" cy="712" r="40" fill="#020a05" stroke="#145426" stroke-width="8"/>
+  </g>
+  <g stroke="#7fe08f" stroke-opacity="0.4" stroke-width="5" stroke-dasharray="46 60">
+    <path d="M0 860 H1600"/>
+  </g>
+  <rect width="1600" height="1000" filter="url(#grain5)" opacity="0.5"/>
+</svg>

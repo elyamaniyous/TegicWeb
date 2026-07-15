@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a2214"/>
+      <stop offset="0.7" stop-color="#07190e"/>
+      <stop offset="1" stop-color="#041108"/>
+    </linearGradient>
+    <radialGradient id="pglow" cx="0.3" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#2fa44a" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#2fa44a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain4">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#psky)"/>
+  <rect width="1600" height="1000" fill="url(#pglow)"/>
+  <!-- portiques -->
+  <g stroke="#020a05" stroke-width="26" fill="none">
+    <path d="M240 780 V330 L700 260 V780"/>
+    <path d="M240 460 H700"/>
+    <path d="M180 330 H760"/>
+    <path d="M980 780 V370 L1380 320 V780"/>
+    <path d="M980 490 H1380"/>
+    <path d="M930 370 H1440"/>
+  </g>
+  <g fill="#020a05">
+    <rect x="420" y="460" width="120" height="90" rx="8"/>
+    <rect x="1130" y="490" width="110" height="80" rx="8"/>
+  </g>
+  <!-- conteneurs empilés -->
+  <g>
+    <g fill="#0e2f1a" stroke="#145426" stroke-width="4">
+      <rect x="80" y="700" width="300" height="80" rx="6"/>
+      <rect x="120" y="620" width="300" height="80" rx="6"/>
+      <rect x="520" y="700" width="300" height="80" rx="6"/>
+      <rect x="900" y="700" width="300" height="80" rx="6"/>
+      <rect x="940" y="620" width="220" height="80" rx="6"/>
+      <rect x="1240" y="700" width="280" height="80" rx="6"/>
+    </g>
+    <g stroke="#145426" stroke-width="4">
+      <path d="M130 700 V780 M180 700 V780 M230 700 V780 M280 700 V780 M330 700 V780"/>
+      <path d="M570 700 V780 M620 700 V780 M670 700 V780 M720 700 V780 M770 700 V780"/>
+      <path d="M950 700 V780 M1000 700 V780 M1050 700 V780 M1100 700 V780 M1150 700 V780"/>
+    </g>
+  </g>
+  <!-- quai / eau -->
+  <rect y="780" width="1600" height="220" fill="#020a05"/>
+  <g stroke="#7fe08f" stroke-opacity="0.3" stroke-width="3" stroke-dasharray="18 26">
+    <path d="M0 850 H1600"/>
+  </g>
+  <circle cx="700" cy="260" r="7" fill="#7fe08f"/>
+  <circle cx="1380" cy="320" r="7" fill="#7fe08f" opacity="0.7"/>
+  <rect width="1600" height="1000" filter="url(#grain4)" opacity="0.5"/>
+</svg>

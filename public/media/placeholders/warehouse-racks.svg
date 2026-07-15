@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e2f1a"/>
+      <stop offset="1" stop-color="#041108"/>
+    </linearGradient>
+    <linearGradient id="aisle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#145426" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#041108" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="grain3">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#wsky)"/>
+  <!-- verrière -->
+  <g stroke="#7fe08f" stroke-opacity="0.32" stroke-width="10" stroke-linecap="round">
+    <path d="M120 90 H480"/><path d="M620 90 H980"/><path d="M1120 90 H1480"/>
+    <path d="M220 190 H580" stroke-opacity="0.2"/><path d="M1020 190 H1380" stroke-opacity="0.2"/>
+  </g>
+  <!-- racks perspective -->
+  <path d="M0 180 L640 420 L640 1000 L0 1000 Z" fill="#07190e"/>
+  <path d="M1600 180 L960 420 L960 1000 L1600 1000 Z" fill="#07190e"/>
+  <g fill="#0e2f1a">
+    <path d="M0 320 L640 500 L640 560 L0 420 Z"/>
+    <path d="M0 520 L640 640 L640 700 L0 640 Z"/>
+    <path d="M0 740 L640 790 L640 850 L0 860 Z"/>
+    <path d="M1600 320 L960 500 L960 560 L1600 420 Z"/>
+    <path d="M1600 520 L960 640 L960 700 L1600 640 Z"/>
+    <path d="M1600 740 L960 790 L960 850 L1600 860 Z"/>
+  </g>
+  <g fill="#145426" fill-opacity="0.55">
+    <rect x="120" y="380" width="150" height="110"/><rect x="330" y="440" width="150" height="100"/>
+    <rect x="120" y="590" width="150" height="90"/><rect x="330" y="640" width="150" height="80"/>
+    <rect x="1330" y="380" width="150" height="110"/><rect x="1120" y="440" width="150" height="100"/>
+    <rect x="1330" y="590" width="150" height="90"/><rect x="1120" y="640" width="150" height="80"/>
+  </g>
+  <!-- allée centrale -->
+  <path d="M640 420 L960 420 L1120 1000 L480 1000 Z" fill="url(#aisle)"/>
+  <path d="M790 430 L810 430 L840 1000 L760 1000 Z" fill="#7fe08f" fill-opacity="0.14"/>
+  <rect width="1600" height="1000" filter="url(#grain3)" opacity="0.5"/>
+</svg>

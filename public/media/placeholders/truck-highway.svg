@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#0e2f1a"/>
+      <stop offset="0.55" stop-color="#07190e"/>
+      <stop offset="1" stop-color="#041108"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.32" r="0.6">
+      <stop offset="0" stop-color="#2fa44a" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#2fa44a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.05"/></feComponentTransfer>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <rect width="1600" height="1000" fill="url(#glow)"/>
+  <g fill="none" stroke="#4fc063" stroke-opacity="0.14">
+    <circle cx="1150" cy="320" r="120" stroke-width="40"/>
+    <circle cx="1150" cy="320" r="230" stroke-width="52"/>
+    <circle cx="1150" cy="320" r="360" stroke-width="64"/>
+  </g>
+  <rect y="700" width="1600" height="300" fill="#020a05"/>
+  <path d="M0 700 L1600 640 L1600 1000 L0 1000 Z" fill="#03100a"/>
+  <g stroke="#7fe08f" stroke-opacity="0.5" stroke-width="6" stroke-dasharray="60 70">
+    <path d="M0 850 L1600 780"/>
+  </g>
+  <g fill="#020a05">
+    <rect x="180" y="470" width="620" height="240" rx="16"/>
+    <rect x="820" y="540" width="190" height="170" rx="14"/>
+    <circle cx="330" cy="730" r="52"/>
+    <circle cx="640" cy="722" r="52"/>
+    <circle cx="900" cy="732" r="44"/>
+  </g>
+  <g fill="#0a2214">
+    <rect x="196" y="486" width="588" height="208" rx="12"/>
+    <rect x="836" y="556" width="158" height="138" rx="10"/>
+  </g>
+  <circle cx="330" cy="730" r="30" fill="#07190e" stroke="#145426" stroke-width="8"/>
+  <circle cx="640" cy="722" r="30" fill="#07190e" stroke="#145426" stroke-width="8"/>
+  <circle cx="900" cy="732" r="26" fill="#07190e" stroke="#145426" stroke-width="8"/>
+  <rect x="1010" y="620" width="46" height="18" rx="9" fill="#7fe08f" opacity="0.85"/>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity="0.5"/>
+</svg>
