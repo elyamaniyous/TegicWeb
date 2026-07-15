@@ -10,6 +10,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { Dict } from "@/i18n";
+import { WORLD_LAND_PATH, MOROCCO_PATH } from "./worldland";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +29,7 @@ type Route = { key: CityKey; lon: number; lat: number; type: "sea" | "air"; anch
 const ROUTES: Route[] = [
   { key: "newYork", lon: -74.0, lat: 40.7, type: "sea", anchor: "end", dy: -10 },
   { key: "rotterdam", lon: 4.5, lat: 51.9, type: "sea", anchor: "start", dy: -12 },
-  { key: "algeciras", lon: -5.45, lat: 36.1, type: "sea", anchor: "start", dy: 16 },
+  { key: "algeciras", lon: -5.45, lat: 36.1, type: "sea", anchor: "start", dy: 5 },
   { key: "jebelAli", lon: 55.0, lat: 25.0, type: "air", anchor: "start", dy: -10 },
   { key: "shanghai", lon: 121.5, lat: 31.2, type: "air", anchor: "start", dy: -10 },
   { key: "singapore", lon: 103.8, lat: 1.35, type: "sea", anchor: "start", dy: 18 },
@@ -44,21 +45,7 @@ function arcPath(to: { x: number; y: number }) {
   return `M ${CASA.x.toFixed(1)} ${CASA.y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${to.x.toFixed(1)} ${to.y.toFixed(1)}`;
 }
 
-/* Continents très stylisés (fond discret — pas un atlas) */
-const LANDS = [
-  "M75 95 130 60 215 60 285 95 300 130 285 150 260 170 235 180 215 205 228 228 205 225 185 195 165 165 120 140 85 120 Z",
-  "M255 245 285 240 310 265 315 300 300 345 280 390 265 415 255 390 245 340 240 290 Z",
-  "M320 45 360 40 380 60 355 80 325 70 Z",
-  "M470 95 490 80 520 70 560 80 585 95 570 115 545 120 520 115 500 125 480 120 Z",
-  "M530 45 555 40 570 60 550 85 535 70 Z",
-  "M470 150 500 140 540 145 565 165 575 195 565 225 545 255 525 290 505 310 490 290 475 250 460 205 455 175 Z",
-  "M585 95 630 70 700 55 780 60 850 75 890 95 900 120 870 140 840 160 810 150 780 165 750 160 720 175 690 165 660 150 630 140 605 120 Z",
-  "M700 175 725 165 740 190 720 225 705 200 Z",
-  "M770 180 800 175 815 195 800 215 780 205 Z",
-  "M790 250 830 245 860 255 845 265 805 260 Z",
-  "M845 300 890 295 915 315 905 345 870 355 845 335 Z",
-  "M880 118 893 108 899 128 884 143 Z",
-];
+/* Le fond de carte provient de Natural Earth (voir ./worldland.ts) */
 
 export function WorldNetwork({ dict }: { dict: Dict["network"] }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -104,9 +91,18 @@ export function WorldNetwork({ dict }: { dict: Dict["network"] }) {
         <svg viewBox="0 28 1000 372" className="network__map" role="img" aria-label={dict.title}>
           <defs>
             <radialGradient id="maGlow" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stopColor="#7fe08f" stopOpacity="0.5" />
+              <stop offset="0" stopColor="#7fe08f" stopOpacity="0.4" />
               <stop offset="1" stopColor="#7fe08f" stopOpacity="0" />
             </radialGradient>
+            <pattern id="landDots" width="7" height="7" patternUnits="userSpaceOnUse">
+              <circle cx="3.5" cy="3.5" r="1.05" fill="#4fc063" />
+            </pattern>
+            <mask id="landMask">
+              <path d={WORLD_LAND_PATH} fill="#fff" />
+            </mask>
+            <filter id="maBlur" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="5" />
+            </filter>
           </defs>
 
           {/* graticule */}
@@ -119,14 +115,13 @@ export function WorldNetwork({ dict }: { dict: Dict["network"] }) {
             ))}
           </g>
 
-          {/* continents stylisés */}
-          <g fill="#10301c" stroke="rgba(127,224,143,0.16)" strokeWidth="1.2" strokeLinejoin="round">
-            {LANDS.map((d) => (
-              <path key={d.slice(0, 12)} d={d} />
-            ))}
-          </g>
+          {/* continents — trait de côte réel (Natural Earth) */}
+          <path d={WORLD_LAND_PATH} fill="#0e2b1a" stroke="rgba(127,224,143,0.14)" strokeWidth="0.7" strokeLinejoin="round" />
+          <rect x="0" y="0" width="1000" height="500" fill="url(#landDots)" mask="url(#landMask)" opacity="0.22" />
 
-          {/* halo Maroc */}
+          {/* Maroc — silhouette complète, surlignée */}
+          <path d={MOROCCO_PATH} fill="var(--g500)" opacity="0.55" filter="url(#maBlur)" />
+          <path d={MOROCCO_PATH} fill="var(--g500)" fillOpacity="0.92" stroke="var(--g300)" strokeWidth="0.8" strokeLinejoin="round" />
           <circle cx={CASA.x} cy={CASA.y} r="55" fill="url(#maGlow)" />
 
           {/* routes */}
@@ -183,8 +178,8 @@ export function WorldNetwork({ dict }: { dict: Dict["network"] }) {
             <animate attributeName="stroke-opacity" values="0.6;0" dur="2.4s" repeatCount="indefinite" />
           </circle>
           <text
-            x={CASA.x - 6}
-            y={CASA.y + 34}
+            x={CASA.x - 22}
+            y={CASA.y + 92}
             className="net-label"
             textAnchor="middle"
             fill="var(--g300)"
