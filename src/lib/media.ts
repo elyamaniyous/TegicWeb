@@ -136,6 +136,15 @@ export const MEDIA = {
       en: "Tegic-liveried electric truck charging at the logistics platform — electric fleet from 2026",
     },
   },
+  /** Poster de la vidéo ciel du port (hero accueil) — extrait de la première image. */
+  skyHero: {
+    photo: "/media/photos/sky-port-hero.jpg",
+    fallback: "/media/placeholders/port-cranes.svg",
+    alt: {
+      fr: "Ciel de fin de journée sur le port de Casablanca, portiques en silhouette",
+      en: "Late-day sky over the port of Casablanca, gantry cranes in silhouette",
+    },
+  },
   /** Visuel généré — terminal à conteneurs au couchant (freight forwarding). */
   portSunset: {
     photo: "/media/photos/port-cranes-sunset.jpg",

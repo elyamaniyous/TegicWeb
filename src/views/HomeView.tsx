@@ -6,7 +6,7 @@ import type { Locale } from "@/lib/site";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
-import { SkyPortScene } from "@/components/SkyPortScene";
+import { HeroVideo } from "@/components/HeroVideo";
 import { CountUp } from "@/components/CountUp";
 import { Masthead, ServiceRows, CtaBand } from "@/components/Sections";
 import { WorldNetwork } from "@/components/WorldNetwork";
@@ -26,12 +26,18 @@ export function HomeView({ locale }: { locale: Locale }) {
     <Chrome locale={locale}>
       <JsonLd data={breadcrumbJsonLd([{ name: dict.nav.home, url: ROUTES.home[locale] }])} />
 
-      {/* ============ HERO — ciel du port, apaisant ============ */}
+      {/* ============ HERO — ciel du port en vidéo, apaisant ============ */}
       <section className="hero">
         <HeroIntro>
           <div className="hero__media" aria-hidden="true">
-            <SkyPortScene />
+            <HeroVideo
+              src="/media/video/hero-home-sky.mp4"
+              poster="/media/photos/sky-port-hero.jpg"
+              slot={MEDIA.skyHero}
+              locale={locale}
+            />
           </div>
+          <div className="hero__scrim" aria-hidden="true" />
 
           <div className="hero__top" data-hero-el>
             <span>Tegic Logistique — {dict.common.since}</span>
