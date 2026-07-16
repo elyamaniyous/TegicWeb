@@ -390,6 +390,7 @@ button { background: none; border: none; cursor: pointer; padding: 0; }
 .hero--short { min-height: min(84svh, 880px); }
 .hero__media { position: absolute; inset: 0; z-index: -2; }
 .hero__media img, .hero__media video, .hero__media .ph-fallback { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 720px) { .hero__top span:last-child { display: none; } }
 .hero__scrim {
   position: absolute; inset: 0; z-index: -1;
   background:
@@ -624,7 +625,7 @@ button { background: none; border: none; cursor: pointer; padding: 0; }
   overflow: clip;
   background: var(--g850);
 }
-.media > img, .media > video, .media > .ph-fallback {
+.media > img, .media video, .media > .ph-fallback {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.8s var(--ease);
 }
