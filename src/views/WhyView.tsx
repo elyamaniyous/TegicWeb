@@ -85,11 +85,16 @@ export function WhyView({ locale }: { locale: Locale }) {
               ))}
             </div>
           </div>
-          <div className="rse" data-reveal style={{ background: "radial-gradient(500px 260px at 100% 0%, rgba(47,164,74,0.1), transparent 65%), var(--g900)" }}>
-            <IconLeafBolt className="icon" />
-            <div style={{ display: "grid", gap: "0.6rem" }}>
-              <h3 className="h3" style={{ color: "#fff" }}>{w.rseTitle}</h3>
-              <p style={{ color: "var(--muted)" }}>{w.rseText}</p>
+          <div className="rse" data-reveal style={{ gridTemplateColumns: "1fr", padding: 0, overflow: "clip", background: "var(--g900)" }}>
+            <div className="media" style={{ aspectRatio: "16 / 7", borderRadius: 0, border: "none" }}>
+              <Photo slot={MEDIA.electricTruck} locale={locale} />
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "1.4rem", alignItems: "start", padding: "1.6rem 1.8rem 1.9rem" }}>
+              <IconLeafBolt className="icon" />
+              <div style={{ display: "grid", gap: "0.6rem" }}>
+                <h3 className="h3" style={{ color: "#fff" }}>{w.rseTitle}</h3>
+                <p style={{ color: "var(--muted)" }}>{w.rseText}</p>
+              </div>
             </div>
           </div>
         </div>

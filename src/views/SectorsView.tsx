@@ -26,6 +26,7 @@ export function SectorsView({ locale }: { locale: Locale }) {
           <Photo slot={MEDIA.warehouse} locale={locale} eager />
         </div>
         <div className="hero__scrim" aria-hidden="true" />
+        <div aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: -1, background: "linear-gradient(to bottom, rgba(4,17,8,0.55), rgba(4,17,8,0.15) 45%)" }} />
         <Rings className="hero__rings rings-svg" cx="85%" cy="20%" />
         <div className="container hero__grid">
           <div className="hero__content">
@@ -38,7 +39,7 @@ export function SectorsView({ locale }: { locale: Locale }) {
 
       <section className="section section--paper">
         <div className="container">
-          <div className="svc-grid">
+          <div className="svc-grid grid-3">
             {s.items.map((item, i) => (
               <article key={item.title} className="svc svc--paper" data-reveal style={{ ["--d" as string]: `${i * 0.05}s` }}>
                 <span className="mono" style={{ color: "var(--g600)" }}>{String(i + 1).padStart(2, "0")}</span>

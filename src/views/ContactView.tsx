@@ -8,6 +8,7 @@ import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
 import { SectionHead } from "@/components/Sections";
 import { IconArrow } from "@/components/Icons";
+import { MOROCCO_PATH } from "@/components/worldland";
 
 export function ContactView({ locale }: { locale: Locale }) {
   const dict = getDict(locale);
@@ -52,6 +53,19 @@ export function ContactView({ locale }: { locale: Locale }) {
                 </p>
               </div>
               <p className="mono" style={{ color: "var(--g300)" }} data-reveal>◆ {c.hoursNote}</p>
+
+              {/* Silhouette du Royaume — Casablanca marquée */}
+              <div className="flow__row" data-reveal style={{ justifyItems: "center", padding: "1.4rem" }}>
+                <svg viewBox="448 138 62 84" style={{ width: "min(220px, 60%)", height: "auto" }} role="img" aria-label="Casablanca, Maroc">
+                  <path d={MOROCCO_PATH} fill="var(--g700)" fillOpacity="0.55" stroke="var(--g400)" strokeWidth="0.6" strokeLinejoin="round" />
+                  <circle cx="478.9" cy="156.7" r="2.4" fill="var(--g300)" />
+                  <circle cx="478.9" cy="156.7" r="4.5" fill="none" stroke="var(--g300)" strokeWidth="0.6">
+                    <animate attributeName="r" values="3;8" dur="2.4s" repeatCount="indefinite" />
+                    <animate attributeName="stroke-opacity" values="0.7;0" dur="2.4s" repeatCount="indefinite" />
+                  </circle>
+                  <text x="483" y="153" fill="#eef5ee" fontSize="4.6" letterSpacing="0.06em" style={{ fontFamily: "var(--font-mono)" }}>CASABLANCA</text>
+                </svg>
+              </div>
             </div>
           </div>
 

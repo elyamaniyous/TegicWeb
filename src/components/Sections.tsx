@@ -16,14 +16,14 @@ export function Masthead({
   meta,
   lead,
 }: {
-  no: string;
+  no?: string;
   title: string;
   meta?: string;
   lead?: string;
 }) {
   return (
     <header className={`mast${lead ? " mast--lead" : ""}`}>
-      <span className="mast__no">({no})</span>
+      <span className="mast__no">{no ? `(${no})` : ""}</span>
       <h2 className="h2" data-reveal>{title}</h2>
       {meta && !lead ? <span className="mast__meta">{meta}</span> : null}
       {lead ? <p className="lead" data-reveal style={{ ["--d" as string]: "0.1s" }}>{lead}</p> : null}

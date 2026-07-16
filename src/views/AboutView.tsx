@@ -41,11 +41,11 @@ export function AboutView({ locale }: { locale: Locale }) {
       </section>
 
       {/* Mission & modèle */}
-      <section className="section section--dark">
-        <div className="container split" style={{ alignItems: "start" }}>
+      <section className="section section--paper">
+        <div className="container split split--start">
           <div style={{ display: "grid", gap: "1rem" }} data-reveal>
             <span className="eyebrow">{a.missionTitle}</span>
-            <p className="lead" style={{ color: "var(--txt)" }}>{a.missionText}</p>
+            <p className="statement" style={{ fontSize: "clamp(1.3rem, 2.2vw, 1.9rem)" }}>{a.missionText}</p>
           </div>
           <div style={{ display: "grid", gap: "1rem" }} data-reveal>
             <span className="eyebrow">{a.modelTitle}</span>
@@ -116,8 +116,8 @@ export function AboutView({ locale }: { locale: Locale }) {
       </section>
 
       <CtaBand
-        title={dict.home.ctaTitle}
-        text={dict.home.ctaText}
+        title={a.cta.title}
+        text={a.cta.text}
         primary={{ label: dict.common.quoteCta, href: ROUTES.quote[locale] }}
         secondary={{ label: dict.common.expertCta, href: ROUTES.contact[locale] }}
       />

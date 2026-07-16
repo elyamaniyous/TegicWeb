@@ -159,6 +159,10 @@ export const fr = {
     teamTitle: "Des équipes d'exploitation, pas des intermédiaires",
     teamText:
       "Caristes, chauffeurs, transitaires, coordinateurs : les personnes qui manipulent votre marchandise portent nos couleurs et répondent à vos équipes en direct.",
+    cta: {
+      title: "Un partenaire qui possède ses moyens, ça change tout.",
+      text: "Rencontrez l'équipe, visitez nos plateformes — et jugez sur pièces. Réponse sous 24h.",
+    },
   },
 
   servicesHub: {
@@ -167,6 +171,18 @@ export const fr = {
     intro:
       "Cinq métiers, une seule chaîne de responsabilité. Chaque service fonctionne seul — ensemble, ils suppriment toutes les ruptures de votre supply chain.",
     flagship: "Service phare",
+    start: {
+      title: "Comment on démarre",
+      steps: [
+        { title: "Vous décrivez vos flux", text: "Origines, destinations, marchandises, volumes : 5 minutes via le formulaire de devis ou un appel." },
+        { title: "Proposition sous 24h", text: "Notre équipe analyse, dimensionne le dispositif et revient avec une solution chiffrée." },
+        { title: "Démarrage & suivi", text: "Vos opérations basculent chez Tegic — un interlocuteur dédié, une traçabilité totale." },
+      ],
+    },
+    cta: {
+      title: "Un seul partenaire. Toute la chaîne.",
+      text: "Décrivez vos flux — nous construisons le dispositif complet et vous répondons sous 24h.",
+    },
   },
 
   services: {
@@ -376,6 +392,10 @@ export const fr = {
       "Gestion des carnets TIR et du transit international",
       "Déclenchement immédiat du transport amont à la validation",
     ],
+    cta: {
+      title: "Vos marchandises n'ont pas à attendre la douane.",
+      text: "Confiez vos dossiers à nos équipes transit — dédouanement en 4h à 48h, camion déjà prêt derrière.",
+    },
   },
   entreposage: {
     eyebrow: "Entreposage",
@@ -389,6 +409,10 @@ export const fr = {
       "Réception directe depuis le transport amont Tegic",
       "Préparation des tournées de distribution nationale",
     ],
+    cta: {
+      title: "Vos stocks méritent mieux qu'un simple hangar.",
+      text: "Parlez-nous de vos volumes — nous dimensionnons l'espace, la manutention et la préparation de commandes.",
+    },
   },
   distribution: {
     eyebrow: "Distribution",
@@ -402,6 +426,10 @@ export const fr = {
       "Suivi GPS et confirmation de livraison",
       "Livraison directe au client final possible selon vos flux",
     ],
+    cta: {
+      title: "Vos points de vente n'attendent pas.",
+      text: "Confiez vos tournées à notre flotte propre — 7j/7, sur tout le Maroc, tracées au kilomètre.",
+    },
   },
   freightForwarding: {
     eyebrow: "Freight forwarding",
@@ -415,6 +443,10 @@ export const fr = {
       "Coordination douanière aux points d'entrée",
       "Continuité immédiate avec le transport amont",
     ],
+    cta: {
+      title: "Vos flux internationaux, un seul interlocuteur.",
+      text: "De l'origine jusqu'à votre site au Maroc — organisation, douane et transport dans les mêmes mains.",
+    },
   },
   serviceCommon: {
     pointsTitle: "Ce que nous prenons en charge",

@@ -20,10 +20,19 @@ const MEDIA_BY_SERVICE: Record<LightKey, MediaKey> = {
   freightForwarding: "portSunset",
 };
 
+/** Panneau latéral : toujours un visuel différent du hero. */
+const SIDE_MEDIA: Record<LightKey, MediaKey> = {
+  transitDouane: "dockLoading",
+  entreposage: "warehouseLift",
+  distribution: "team",
+  freightForwarding: "airportCargo",
+};
+
 export function ServiceLightView({ locale, service }: { locale: Locale; service: LightKey }) {
   const dict = getDict(locale);
   const s = dict[service];
   const media = MEDIA[MEDIA_BY_SERVICE[service]];
+  const sideMedia = MEDIA[SIDE_MEDIA[service]];
 
   return (
     <Chrome locale={locale}>
@@ -68,8 +77,8 @@ export function ServiceLightView({ locale, service }: { locale: Locale; service:
               ))}
             </ul>
           </div>
-          <div className="media media--43" data-reveal>
-            <Photo slot={media} locale={locale} />
+          <div className="media media--43" data-parallax data-reveal>
+            <Photo slot={sideMedia} locale={locale} />
             <div className="media__scrim" aria-hidden />
             <span className="media__tag">Tegic · {dict.services[service].title}</span>
           </div>
@@ -79,7 +88,7 @@ export function ServiceLightView({ locale, service }: { locale: Locale; service:
       {service === "freightForwarding" ? (
         <section className="section section--dark">
           <div className="container">
-            <Masthead no="01" title={dict.network.title} lead={dict.network.text} />
+            <Masthead title={dict.network.title} lead={dict.network.text} />
             <div data-reveal>
               <WorldNetwork dict={dict.network} />
             </div>
@@ -95,8 +104,8 @@ export function ServiceLightView({ locale, service }: { locale: Locale; service:
       </section>
 
       <CtaBand
-        title={dict.home.ctaTitle}
-        text={dict.home.ctaText}
+        title={s.cta.title}
+        text={s.cta.text}
         primary={{ label: dict.common.quoteCta, href: ROUTES.quote[locale] }}
         secondary={{ label: dict.common.expertCta, href: ROUTES.contact[locale] }}
       />

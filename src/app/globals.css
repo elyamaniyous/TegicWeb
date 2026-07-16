@@ -25,7 +25,7 @@
   --ink-faint: #7d8a80;
 
   --txt: #eef5ee;
-  --muted: #9fb5a5;
+  --muted: #b7cbbd;
 
   --line-ink: rgba(14, 26, 17, 0.16);
   --line-ink-strong: rgba(14, 26, 17, 0.4);
@@ -1082,6 +1082,9 @@ button { background: none; border: none; cursor: pointer; padding: 0; }
   .photoduo { grid-template-columns: 1fr; }
   .photoduo > :first-child, .photoduo > :last-child { grid-column: auto; }
 }
+
+/* grille 3 colonnes équilibrée (secteurs) */
+@media (min-width: 1080px) { .grid-3 { grid-template-columns: repeat(3, 1fr) !important; } }
 
 /* utilitaires responsive */
 .only-desktop { display: none; }

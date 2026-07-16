@@ -161,6 +161,10 @@ export const en: Dict = {
     teamTitle: "Operations teams, not middlemen",
     teamText:
       "Forklift operators, drivers, customs agents, coordinators: the people handling your cargo wear our colours and answer your teams directly.",
+    cta: {
+      title: "A partner that owns its resources changes everything.",
+      text: "Meet the team, visit our platforms — and judge for yourself. Answer within 24 hours.",
+    },
   },
 
   servicesHub: {
@@ -169,6 +173,18 @@ export const en: Dict = {
     intro:
       "Five disciplines, one chain of responsibility. Each service stands on its own — together, they remove every break in your supply chain.",
     flagship: "Flagship service",
+    start: {
+      title: "How we get started",
+      steps: [
+        { title: "You describe your flows", text: "Origins, destinations, goods, volumes: 5 minutes through the quote form or a call." },
+        { title: "Proposal within 24 hours", text: "Our team analyses, sizes the set-up and comes back with a costed solution." },
+        { title: "Launch & follow-up", text: "Your operations switch to Tegic — one dedicated contact, full traceability." },
+      ],
+    },
+    cta: {
+      title: "One partner. The whole chain.",
+      text: "Describe your flows — we build the complete set-up and answer within 24 hours.",
+    },
   },
 
   services: {
@@ -376,6 +392,10 @@ export const en: Dict = {
       "TIR carnets and international transit management",
       "Upstream transport triggered immediately at clearance",
     ],
+    cta: {
+      title: "Your goods shouldn't wait for customs.",
+      text: "Hand your files to our customs teams — clearance in 4 to 48 hours, truck already waiting behind.",
+    },
   },
   entreposage: {
     eyebrow: "Warehousing",
@@ -389,6 +409,10 @@ export const en: Dict = {
       "Direct reception from Tegic upstream transport",
       "Preparation of nationwide distribution rounds",
     ],
+    cta: {
+      title: "Your stock deserves better than a shed.",
+      text: "Tell us about your volumes — we size the space, the handling and the order preparation.",
+    },
   },
   distribution: {
     eyebrow: "Distribution",
@@ -402,6 +426,10 @@ export const en: Dict = {
       "GPS tracking and delivery confirmation",
       "Direct delivery to end customers possible depending on your flows",
     ],
+    cta: {
+      title: "Your points of sale don't wait.",
+      text: "Hand your rounds to our own fleet — 7 days a week, across Morocco, tracked to the kilometre.",
+    },
   },
   freightForwarding: {
     eyebrow: "Freight forwarding",
@@ -415,6 +443,10 @@ export const en: Dict = {
       "Customs coordination at points of entry",
       "Immediate continuity with upstream transport",
     ],
+    cta: {
+      title: "Your international flows, one single contact.",
+      text: "From origin to your site in Morocco — organisation, customs and transport in the same hands.",
+    },
   },
   serviceCommon: {
     pointsTitle: "What we take care of",
