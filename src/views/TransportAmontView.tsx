@@ -106,7 +106,7 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
           <div className="cards3">
             {ta.pickup.cards.map((card, i) => {
               const Icon = PICKUP_ICONS[i];
-              const media = [MEDIA.dockLoading, MEDIA.airportCargo, MEDIA.borderNight][i];
+              const media = [MEDIA.portSunset, MEDIA.airportCargo, MEDIA.borderNight][i];
               return (
                 <article key={card.title} className="pcard" data-reveal style={{ ["--d" as string]: `${i * 0.07}s` }}>
                   <div className="pcard__media">
