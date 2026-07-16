@@ -463,6 +463,66 @@ button { background: none; border: none; cursor: pointer; padding: 0; }
 @keyframes cue { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
 @media (min-width: 1100px) { .scrollcue { display: inline-flex; } }
 
+/* ---------- Hero ciel du port (scène code, apaisante) ---------- */
+.skyport { position: absolute; inset: 0; overflow: clip; }
+.skyport__sky {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    #081f16 0%,
+    #123f2e 30%,
+    #1e5749 52%,
+    #2e6b52 66%,
+    #b9a06f 74%,
+    #123527 78%,
+    #0a241a 100%
+  );
+}
+.skyport__sun {
+  position: absolute;
+  left: 58%; top: 58%;
+  width: 46vw; height: 30vh;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(233, 204, 148, 0.5), rgba(233, 204, 148, 0.12) 45%, transparent 70%);
+  filter: blur(6px);
+}
+.skyport__cloud {
+  position: absolute;
+  height: 22vh;
+  width: 60vw;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(220, 236, 224, 0.16), transparent 70%);
+  filter: blur(30px);
+  will-change: transform;
+}
+.skyport__cloud--1 { top: 8%; left: -20%; animation: clouddrift 120s linear infinite; }
+.skyport__cloud--2 { top: 26%; left: 30%; height: 16vh; opacity: 0.8; animation: clouddrift 160s linear infinite reverse; }
+.skyport__cloud--3 { top: 44%; left: -10%; height: 12vh; opacity: 0.6; animation: clouddrift 200s linear infinite; }
+@keyframes clouddrift {
+  0% { transform: translateX(-12vw); }
+  50% { transform: translateX(24vw); }
+  100% { transform: translateX(-12vw); }
+}
+.skyport__cranes { position: absolute; left: 0; right: 0; bottom: 20%; width: 100%; height: 20vh; opacity: 0.6; }
+.skyport__beacon { animation: beacon 3.2s ease-in-out infinite; }
+.skyport__beacon--late { animation-delay: 1.6s; }
+@keyframes beacon { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+.skyport__sea {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 8%;
+  background: linear-gradient(180deg, #0d2c20, #07190f);
+}
+.skyport__sea::before {
+  content: "";
+  position: absolute; left: 10%; right: 10%; top: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(233, 204, 148, 0.5), transparent);
+  animation: shimmer 9s ease-in-out infinite;
+}
+@keyframes shimmer { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.8; } }
+.skyport__base {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(4, 17, 8, 0.94) 4%, rgba(4, 17, 8, 0.55) 26%, rgba(4, 17, 8, 0.1) 48%, transparent 62%);
+}
+
 /* ---------- Ticker / marquees ---------- */
 .ticker { border-block: 1px solid var(--line-ink); background: var(--paper); overflow: clip; padding-block: 0.9rem; color: var(--ink-soft); }
 .ticker__track { display: flex; gap: 3.4rem; width: max-content; animation: marquee 36s linear infinite; }

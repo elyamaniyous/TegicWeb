@@ -6,6 +6,7 @@ import type { Locale } from "@/lib/site";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
+import { SkyPortScene } from "@/components/SkyPortScene";
 import { CountUp } from "@/components/CountUp";
 import { Masthead, ServiceRows, CtaBand } from "@/components/Sections";
 import { WorldNetwork } from "@/components/WorldNetwork";
@@ -25,13 +26,12 @@ export function HomeView({ locale }: { locale: Locale }) {
     <Chrome locale={locale}>
       <JsonLd data={breadcrumbJsonLd([{ name: dict.nav.home, url: ROUTES.home[locale] }])} />
 
-      {/* ============ HERO ============ */}
+      {/* ============ HERO — ciel du port, apaisant ============ */}
       <section className="hero">
         <HeroIntro>
           <div className="hero__media" aria-hidden="true">
-            <Photo slot={MEDIA.fleet} locale={locale} eager />
+            <SkyPortScene />
           </div>
-          <div className="hero__scrim" aria-hidden="true" />
 
           <div className="hero__top" data-hero-el>
             <span>Tegic Logistique — {dict.common.since}</span>
