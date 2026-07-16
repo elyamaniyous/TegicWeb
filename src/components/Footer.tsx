@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoLockup } from "./Logo";
+import { LogoLockup, TEGIC_WORDMARK_PATHS, TEGIC_WORDMARK_VIEWBOX } from "./Logo";
 import { ROUTES } from "@/lib/routes";
 import { SITE, type Locale } from "@/lib/site";
 import type { Dict } from "@/i18n";
@@ -18,16 +18,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dict }) {
 
   return (
     <footer className="ftr">
-      <svg viewBox="0 0 250 112" className="ftr__watermark" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="16" strokeLinecap="round">
-        <path d="M22 12 V64 a20 20 0 0 0 20 20" />
-        <path d="M8 36 H42" />
-        <circle cx="74" cy="61" r="23" />
-        <path d="M52 57 H95" strokeWidth="14" />
-        <circle cx="128" cy="61" r="23" />
-        <path d="M151 42 V84 a19 19 0 0 1 -31 14" />
-        <path d="M176 44 V84" />
-        <circle cx="176" cy="18" r="9.5" fill="currentColor" stroke="none" />
-        <path d="M236.5 46.5 a23 23 0 1 0 0 29" />
+      <svg viewBox={TEGIC_WORDMARK_VIEWBOX} className="ftr__watermark" aria-hidden="true" fill="currentColor">
+        {TEGIC_WORDMARK_PATHS.map((d, i) => (
+          <path key={i} d={d} />
+        ))}
       </svg>
       <div className="container">
         <div className="ftr__grid">

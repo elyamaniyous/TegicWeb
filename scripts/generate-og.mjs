@@ -12,17 +12,14 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = join(root, "public", "og");
 mkdirSync(outDir, { recursive: true });
 
+/* Wordmark officiel : lettres blanches extraites de public/brand/tegic-badge.svg */
+import { readFileSync } from "fs";
+const badge = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "public", "brand", "tegic-badge.svg"), "utf8");
+const letterPaths = [...badge.matchAll(/<path fill="#ffffff"[^>]*d="([^"]+)"/g)].map((m) => m[1]);
+/* viewBox lettres : x 222.08→372.27, y 556.21→627.44 */
 const wordmark = (scale = 1, x = 0, y = 0) => `
-  <g transform="translate(${x} ${y}) scale(${scale})" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round">
-    <path d="M22 12 V64 a20 20 0 0 0 20 20"/>
-    <path d="M8 36 H42"/>
-    <circle cx="74" cy="61" r="23"/>
-    <path d="M52 57 H95" stroke-width="14"/>
-    <circle cx="128" cy="61" r="23"/>
-    <path d="M151 42 V84 a19 19 0 0 1 -31 14"/>
-    <path d="M176 44 V84"/>
-    <circle cx="176" cy="18" r="9.5" fill="#ffffff" stroke="none"/>
-    <path d="M236.5 46.5 a23 23 0 1 0 0 29"/>
+  <g transform="translate(${x} ${y}) scale(${scale}) translate(-222.08 -556.21)" fill="#ffffff">
+    ${letterPaths.map((d) => `<path d="${d}"/>`).join("\n    ")}
   </g>`;
 
 function ogSvg({ title1, title2, kicker, footer }) {
@@ -45,7 +42,7 @@ function ogSvg({ title1, title2, kicker, footer }) {
     <circle cx="1020" cy="130" r="170" stroke-opacity="0.22" stroke-width="38"/>
     <circle cx="1020" cy="130" r="260" stroke-opacity="0.12" stroke-width="46"/>
   </g>
-  ${wordmark(0.75, 84, 70)}
+  ${wordmark(1.2, 84, 64)}
   <text x="86" y="130" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" letter-spacing="9" fill="#7fe08f" transform="translate(0 66)" opacity="0">.</text>
   <text x="86" y="300" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="58" fill="#ffffff">${title1}</text>
   <text x="86" y="372" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="58" fill="#ffffff">${title2}</text>
