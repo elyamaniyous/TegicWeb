@@ -6,6 +6,7 @@ import type { Locale } from "@/lib/site";
 import { JsonLd, faqJsonLd, transportServiceJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { Chrome } from "@/components/Chrome";
 import { Photo } from "@/components/Photo";
+import { HeroVideo } from "@/components/HeroVideo";
 import { CountUp } from "@/components/CountUp";
 import { TrackingConsole } from "@/components/TrackingConsole";
 import { Masthead, CtaBand, FaqList, ServiceRows, FleetBars, FlowCompare } from "@/components/Sections";
@@ -39,7 +40,12 @@ export function TransportAmontView({ locale }: { locale: Locale }) {
       <section className="hero">
         <HeroIntro>
           <div className="hero__media" aria-hidden="true">
-            <Photo slot={MEDIA.heroTransport} locale={locale} eager />
+            <HeroVideo
+              src="/media/video/hero-transport-amont.mp4"
+              poster="/media/photos/semi-tegic-hq-cine.jpg"
+              slot={MEDIA.heroTransport}
+              locale={locale}
+            />
           </div>
           <div className="hero__scrim" aria-hidden="true" />
 

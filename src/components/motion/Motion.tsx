@@ -169,10 +169,12 @@ export function HeroIntro({ children, className }: { children: ReactNode; classN
     const el = ref.current;
     if (!el || reduced()) return;
     const ctx = gsap.context(() => {
+      const video = el.querySelector(".hero__media video");
       const img = el.querySelector(".hero__media img, .hero__media .ph-fallback");
       const items = el.querySelectorAll("[data-hero-el]");
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      if (img) tl.fromTo(img, { scale: 1.14 }, { scale: 1, duration: 1.9, ease: "power2.out" }, 0);
+      // la vidéo porte son propre mouvement — Ken Burns réservé aux photos
+      if (!video && img) tl.fromTo(img, { scale: 1.14 }, { scale: 1, duration: 1.9, ease: "power2.out" }, 0);
       tl.fromTo(
         items,
         { y: 34, opacity: 0 },
