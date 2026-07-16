@@ -10,7 +10,7 @@ export function organizationJsonLd() {
     name: SITE.name,
     alternateName: "tegic — Strategic Logistics",
     url: SITE.url,
-    logo: `${SITE.url}/brand/tegic-logo.svg`,
+    logo: `${SITE.url}/brand/tegic-badge.svg`,
     email: SITE.email,
     slogan: SITE.baseline.fr,
     address: {

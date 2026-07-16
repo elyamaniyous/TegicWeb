@@ -92,7 +92,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dict }) {
         </div>
 
         <div className="ftr__bottom">
-          <span>© {year} {SITE.name}. {f.rights}</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.7rem" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/tegic-picto.svg" alt="" width={22} height={22} />
+            © {year} {SITE.name}. {f.rights}
+          </span>
           <span className="mono" style={{ letterSpacing: "0.2em", color: "var(--g700)" }}>
             {dict.common.since}
           </span>

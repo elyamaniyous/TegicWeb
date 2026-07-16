@@ -12,7 +12,11 @@ export function TrackingConsole({ dict, live }: { dict: Dict; live: string }) {
   return (
     <div className="console" data-reveal>
       <div className="console__head">
-        <span className="console__id">{c.vehicle}</span>
+        <span className="console__id" style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/tegic-picto.svg" alt="" width={20} height={20} />
+          {c.vehicle}
+        </span>
         <span className="console__live"><i aria-hidden />{live}</span>
       </div>
 
