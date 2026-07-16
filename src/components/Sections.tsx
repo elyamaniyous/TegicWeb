@@ -33,7 +33,7 @@ export function Masthead({
 
 /* ---------- Liste services éditoriale avec aperçu photo ---------- */
 const SERVICE_THUMBS: Record<string, MediaKey> = {
-  transitDouane: "dockLoading",
+  transitDouane: "customsInspection",
   transportAmont: "heroTransport",
   entreposage: "warehouse",
   distribution: "distribution",

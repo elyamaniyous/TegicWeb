@@ -14,7 +14,7 @@ import { IconArrow } from "@/components/Icons";
 type LightKey = "transitDouane" | "entreposage" | "distribution" | "freightForwarding";
 
 const MEDIA_BY_SERVICE: Record<LightKey, MediaKey> = {
-  transitDouane: "dockLoading",
+  transitDouane: "customsInspection",
   entreposage: "warehouse",
   distribution: "distribution",
   freightForwarding: "portSunset",

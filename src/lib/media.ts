@@ -19,9 +19,9 @@ export type MediaSlot = {
 };
 
 export const MEDIA = {
-  /** Photo 6 — semi-remorque Scania + remorque tegic devant le siège, ciel dramatique. HERO transport amont. */
+  /** Photo #70 étalonnée (ciel d'orage) — cohérente avec la vidéo hero. */
   heroTransport: {
-    photo: "/media/photos/semi-tegic-hq.jpg",
+    photo: "/media/photos/semi-tegic-hq-cine.jpg",
     fallback: "/media/placeholders/truck-highway.svg",
     alt: {
       fr: "Semi-remorque de la flotte propre Tegic Logistique quittant le siège de Casablanca pour un enlèvement portuaire",
@@ -109,13 +109,22 @@ export const MEDIA = {
       en: "Air freight on the apron: cargo pallets ready for pickup at Mohammed V airport",
     },
   },
-  /** Visuel généré — poste frontière routier de nuit (transport international). */
+  /** Visuel généré — semi-remorques Tegic au poste frontière de nuit. */
   borderNight: {
     photo: "/media/photos/border-night.jpg",
     fallback: "/media/placeholders/truck-highway.svg",
     alt: {
-      fr: "Semi-remorques au poste frontière de nuit — transport routier international vers le Maroc",
-      en: "Semi-trailers at a border crossing by night — international road transport to Morocco",
+      fr: "Semi-remorques de la flotte Tegic au poste frontière de nuit — transport routier international vers le Maroc",
+      en: "Tegic fleet semi-trailers at a border crossing by night — international road transport to Morocco",
+    },
+  },
+  /** Visuel généré — coordination transit : agent Tegic et douanier au conteneur. */
+  customsInspection: {
+    photo: "/media/photos/customs-inspection.jpg",
+    fallback: "/media/placeholders/port-cranes.svg",
+    alt: {
+      fr: "Agent Tegic et agent de douane coordonnant l'inspection d'un conteneur au port de Casablanca",
+      en: "Tegic agent and customs officer coordinating a container inspection at the port of Casablanca",
     },
   },
   /** Visuel généré — camion électrique Tegic en charge (engagement RSE 2026). */
