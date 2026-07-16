@@ -134,10 +134,15 @@ export function HomeView({ locale }: { locale: Locale }) {
             ))}
           </div>
 
-          <div className="media media--169" data-parallax data-reveal style={{ marginTop: "clamp(2rem, 4vw, 3rem)" }}>
-            <Photo slot={MEDIA.distribution} locale={locale} />
+          <div className="media media--169" data-reveal style={{ marginTop: "clamp(2rem, 4vw, 3rem)" }}>
+            <HeroVideo
+              src="/media/video/port-aerial.mp4"
+              poster="/media/photos/port-aerial-poster.jpg"
+              slot={MEDIA.portAerial}
+              locale={locale}
+            />
             <div className="media__scrim" aria-hidden />
-            <span className="media__tag">{dict.common.ownFleet} · Casablanca</span>
+            <span className="media__tag">{locale === "fr" ? "Port de Casablanca · Vue aérienne" : "Port of Casablanca · Aerial view"}</span>
           </div>
 
           <div style={{ marginTop: "2rem" }} data-reveal>

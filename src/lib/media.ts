@@ -136,6 +136,15 @@ export const MEDIA = {
       en: "Tegic-liveried electric truck charging at the logistics platform — electric fleet from 2026",
     },
   },
+  /** Poster de la vidéo aérienne du port (panneau flotte, accueil). */
+  portAerial: {
+    photo: "/media/photos/port-aerial-poster.jpg",
+    fallback: "/media/placeholders/port-cranes.svg",
+    alt: {
+      fr: "Vue aérienne du terminal à conteneurs du port de Casablanca, porte-conteneurs en cours de déchargement",
+      en: "Aerial view of the Casablanca port container terminal, container ship being unloaded",
+    },
+  },
   /** Poster de la vidéo ciel du port (hero accueil) — extrait de la première image. */
   skyHero: {
     photo: "/media/photos/sky-port-hero.jpg",
